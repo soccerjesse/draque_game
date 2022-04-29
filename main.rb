@@ -1,29 +1,13 @@
-class Brave
-  attr_reader :name,:offense,:defense #getter
-  attr_accessor :hp
+require './brave'
+require './monster'
+require './games_controller'
 
-  # def initialize(name,hp,offense,defense)
-  def initialize(**params)
-    @name = params[:name]
-    @hp   = params[:hp]
-    @offense = params[:offense]
-    @defense = params[:defense]
-  end
+games_controller = GamesController.new
 
-  
-end
+terry = Brave.new(name: "テリー", hp: 500, offense: 150, defense: 100)
+slime = Monster.new(name: "スライム", hp: 250, offense: 200, defense: 100)
 
-brave = Brave.new(name: "jesse",hp: 400,offense: 200,defense: 100)
+games_controller.battle(brave: terry, monster: slime)
 
-
-puts "NAME:#{brave.name}"
-puts "HP:#{brave.hp}"
-puts "OFFENSE:#{brave.offense}"
-puts "DEFENSE:#{brave.defense}"
-
-brave.hp -= 30
-
-puts "#{brave.name}のこり#{brave.hp}"
-
-
-
+EXP_CONSTANT = 2
+GOLD_CONSTANT = 3
